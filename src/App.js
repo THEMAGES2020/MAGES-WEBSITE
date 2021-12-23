@@ -14,6 +14,7 @@ import {
   
 } from "react-router-dom";
 import Blogs from "./components/blogs";
+import "./App.css"
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           </Route>
           <Route path="/">
          
-    <div style={{ overflowX: "hidden" }}>
+    <div className="aapp_scro" style={{ overflowX: "hidden" }}>
 
 
 
