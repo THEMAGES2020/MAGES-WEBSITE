@@ -200,3 +200,7 @@
 
   }
 }
+.aapp_scro::-webkit-scrollbar{
+  display: none;
+  
+}
