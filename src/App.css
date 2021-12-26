@@ -198,9 +198,15 @@
 
   }
 }
+
 .reachouttext{
   color: #44b2e5;
 }
 .reachouttext:hover{
   color: white;
+
+.aapp_scro::-webkit-scrollbar{
+  display: none;
+  
+
 }

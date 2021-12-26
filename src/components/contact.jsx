@@ -57,7 +57,7 @@ Name,Company,mobile,email,work
 
     await axios
       .post(
-        "https://magsqwertyui.herokuapp.com/api/messages",
+        "https://magestudio.herokuapp.com/api/messages",
         { to: "+916238023468", body: details },
         {
           headers: {
