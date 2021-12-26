@@ -41,9 +41,7 @@
 .noscrollbar {
   overflow: hidden;
 }
-.noscrollbar::-webkit-scrollbar {
-  /* display: none; */
-}
+
 .reachout {
   background: linear-gradient(to right, #44b2e5 50%, transparent 50%);
   background-size: 200% 100%;
@@ -87,20 +85,20 @@
     height: fit-content;
   }
 }
-@media only screen and (max-width: 425px) {
+.block1:hover {
+  height: 100vh;
+  
+}
+.block2:hover {
+  height: 100vh ;
+}
+@media only screen and (max-width: 1024px) {
   .block1:hover {
     height: fit-content;
   }
   .block2:hover {
     height: fit-content;
   }
-}
-.block1:hover {
-  min-height: 95vh;
-  
-}
-.block2:hover {
-  min-height: 95vh;
 }
 
 .block1 .about__hovershow {
@@ -200,7 +198,15 @@
 
   }
 }
+
+.reachouttext{
+  color: #44b2e5;
+}
+.reachouttext:hover{
+  color: white;
+
 .aapp_scro::-webkit-scrollbar{
   display: none;
   
+
 }
