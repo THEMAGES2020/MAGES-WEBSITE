@@ -2,29 +2,41 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
-import "../App.css"
+import "../App.css";
 
 // import sortAndSetCategory from "./util/SortAndSetCategory";
 function Blogs() {
   const [data, setmediumdata] = useState([]);
   const [isOpen, setOpen] = useState(false);
+  // const [isImage, setisImage] = useState(false);
+  var expression =
+    /(https?:\/\/(?:www\.|(?!www))[^\s]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi;
+
   // const URL =
   //   "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40Mages.Studio";
 
   useEffect(() => {
     const fetchd = () => {
-      axios
-        .get(
-          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@magesstudio"
-        )
-        .then((res) => {
-          setmediumdata(res.data);
+      axios.get("https://magestudio.herokuapp.com/blogs").then((res) => {
+        setmediumdata(res.data.rss.channel.item);
 
-          // console.log(data);
-        });
+        // console.log(
+        //   res.data.rss.channel.item[0]["content:encoded"]._cdata.match(
+        //     expression
+        //   )
+        // );
+        if (
+          res.data.rss.channel.item[1]["content:encoded"]._cdata.match(
+            expression
+          )
+        ) {
+          // console.error("image");
+          // setisImage(true);
+        }
+      });
     };
     fetchd();
-  }, [data]);
+  });
   // const abc=""
   return (
     <div
@@ -38,23 +50,28 @@ function Blogs() {
         <div
           style={{ display: !isOpen ? "none" : "block" }}
           className='bg-gray-800  w-full pb-16 h-76'>
-            <Link to="/">
-          <p
-            className='text-blue-300 p-4 w-4/5 text-3xl'
-            style={{
-              fontFamily: "Poppins",
-              color: "#44b2e5",
-              fontWeight: 700,
-            }}>
-            Mages
-          </p></Link>
+          <Link to='/'>
+            <p
+              className='text-blue-300 p-4 w-4/5 text-3xl'
+              style={{
+                fontFamily: "Poppins",
+                color: "#44b2e5",
+                fontWeight: 700,
+              }}>
+              Mages
+            </p>
+          </Link>
 
-          <Link to='/contact'>   <p className='text-white text-xl p-4 w-full  text-center'>HOME</p></Link>
+          <Link to='/contact'>
+            {" "}
+            <p className='text-white text-xl p-4 w-full  text-center'>HOME</p>
+          </Link>
           <div className='h-1 w-4/5 m-auto text-center bg-blue-300'></div>
           <Link to='/contact'>
             {" "}
             <p className='text-white p-4 w-full text-xl  text-center'>
-CONTACT            </p>
+              CONTACT{" "}
+            </p>
           </Link>
           <div className='h-1 w-4/5 m-auto text-center bg-blue-300'></div>
           <Link to='/blog'>
@@ -76,18 +93,19 @@ CONTACT            </p>
           </a>
         </div>
       </div>
-      <div className='flex justify-between  m-auto' style={{width:"95vw"}}>
+      <div className='flex justify-between  m-auto' style={{ width: "95vw" }}>
         <div className='flex items-center w-full  justify-between '>
-          <Link to="/">
-          <p
-            className='text-3xl p-4 md:p-8 md:px-20   '
-            style={{
-              fontFamily: "poppins",
-              color: "#44b2e5",
-              fontWeight: 700,
-            }}>
-            Mages<span className='text-green-300'></span>
-          </p></Link>
+          <Link to='/'>
+            <p
+              className='text-3xl p-4 md:p-8 md:px-20   '
+              style={{
+                fontFamily: "poppins",
+                color: "#44b2e5",
+                fontWeight: 700,
+              }}>
+              Mages<span className='text-green-300'></span>
+            </p>
+          </Link>
           <div
             style={{ float: "right", zIndex: 1000 }}
             className='md:hidden text-blue-300'>
@@ -135,7 +153,6 @@ CONTACT            </p>
             h-full w-full md:w-1/3 md:h-4/5
           )}
           )} */}
-
       {/* 
 
         {data.items?.map((item, index) => {
@@ -174,28 +191,19 @@ CONTACT            </p>
             </div>
           );
         })} */}
-
       <div
-        style={{ columnGap: "25px", margin: "auto" ,rowGap:"4px"}}
+        style={{ columnGap: "25px", margin: "auto", rowGap: "4px" }}
         className='columsmain w-11/12 md:w-3/4 '>
-        {data.items?.map((item, index) => {
+        {/* {data?.map((item, index) => {
           return (
             // <div className='w-5/6  p-4  bg-white shadow-2xl hover:shadow-xl my-2 mr-0' style={{breakInside:"avoid"}} >
-            <a key={index}
-              href={item.link}
+            <a
+              key={index}
+              href={item.link._text}
               style={{ breakInside: "avoid" }}
               className='rounded inline-flex p-2  flex-col bg-white w-full md:w-full m-auto my-4 shadow-2xl hover:shadow-xl'>
               <img src={item.thumbnail} alt='' style={{ objectFit: "cover" }} />
               <h1 className='text-left font-bold p-2'>{item.title}</h1>
-              {/* <h2>{item.content.length>100?item.content.slice(0,100):item.content}</h2> */}
-              <h2 className='text-gray-600 p-2'>
-                {item.content.length > 200
-                  ? `${
-                      item.content.replace(/<\/?[^>]+>/gi, "").slice(0, 150) +
-                      "..."
-                    }`
-                  : item.content}
-              </h2>
               <div className='flex items-center p-2 py-4'>
                 {data ? (
                   <img
@@ -206,10 +214,10 @@ CONTACT            </p>
                 ) : null}
                 {data ? (
                   <div className='flex-col px-2'>
-                    <p className='text-gray-700'>{item?.author}</p>
                     <p className='text-gray-700'>
-                      {item?.pubDate.substr(0, 10)}
+                      {item ? ["dc:creator"]._cdata : null}
                     </p>
+                    <p className='text-gray-700'>{item?.itm?.substr(0, 10)}</p>
                   </div>
                 ) : null}
                 {}
@@ -218,10 +226,62 @@ CONTACT            </p>
             // </div>
           );
         })}
-      </div>
-      {/* <img src={{url:data?.feed?.image}} className="w-64 h-64"/> */}
+      </div> */}
+
+        {data?.map((item, index) => {
+          return (
+            <a
+              href={item.link._text}
+              key={index}
+              className='rounded inline-flex p-2  flex-col bg-white w-full md:w-full m-auto my-4 shadow-2xl hover:shadow-xl'>
+              {item["content:encoded"]?._cdata.match(expression) ? (
+                <img
+                  src={item["content:encoded"]?._cdata
+                    .match(expression)[0]
+                    ?.slice(0, -1)}
+                  alt='  '
+                  style={{ objectFit: "cover" }}
+                />
+              ) : null}
+              <h1 className='text-left font-bold p-2'>{item.title._cdata}</h1>
+              <h2 className='text-gray-600 p-2'>
+                {item["content:encoded"]._cdata.length > 200
+                  ? `${
+                      item["content:encoded"]._cdata
+                        .replace(/<\/?[^>]+>/gi, "")
+                        .slice(0, 150) + "..."
+                    }`
+                  : null}
+              </h2>
+              <div className='flex items-center p-2 py-4'>
+                {data ? (
+                  <img
+                    alt=''
+                    src={
+                      "https://miro.medium.com/max/70/1*54so0LTGQufckTEi0djsfQ.png"
+                    }
+                    className='w-12 h-12  rounded-full'
+                  />
+                ) : null}
+                {data ? (
+                  <div className='flex-col px-2'>
+                    <p className='text-gray-700'>
+                      {item ? item["dc:creator"]._cdata : null}
+                    </p>
+                    <p className='text-gray-700'>
+                      {item["atom:updated"]._text.substr(0, 10)}
+                    </p>
+
+                    {/* <p className='text-gray-700'>{item?.itm?.substr(0, 10)}</p> */}
+                  </div>
+                ) : null}
+              </div>
+            </a>
+          );
+        })}
+        {/* <img src={{url:data?.feed?.image}} className="w-64 h-64"/> */}
+      </div>{" "}
     </div>
-    // </div>
   );
 }
 
