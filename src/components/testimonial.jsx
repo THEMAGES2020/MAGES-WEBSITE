@@ -3,10 +3,10 @@ import React from "react";
 function Testimonial() {
   return (
     <div
-      className='  mt-0   flex items-center justify-center  '
-      style={{ height: "85vh" }}>
+      className='  mt-0   flex items-center justify-center  md:pb-8'
+      style={{ height: "75vh" }}>
       <div classname=''>
-        <div className='mb-4 '>
+        <div className='mb-4 '> 
           <svg
             fill='#44b2e5'
             className='m-auto pb-8  block w-3/5 md:w-2/5  lg:w-2/6' 
@@ -22,8 +22,8 @@ function Testimonial() {
           </svg>
         </div>
         <h1
-          className='text-center text-5xl font-bold xl:text-5xl lg:mb-10'
-          style={{ color: "#4a4a4a" }}>
+          className='text-center text-5xl font-bold xl:text-6xl lg:mb-10'
+          style={{ color: "#4a4a4a" ,fontWeight: 800}}>
           THANK YOU
         </h1>
         <p className='text-center text-xl mt-2 p-1 xl:text-2xl' style={{ color: "#b0b0b0" ,fontFamily:"Poppins",fontWeight:300}}>

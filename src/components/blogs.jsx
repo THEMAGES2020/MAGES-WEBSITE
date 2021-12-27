@@ -181,7 +181,7 @@ CONTACT            </p>
         {data.items?.map((item, index) => {
           return (
             // <div className='w-5/6  p-4  bg-white shadow-2xl hover:shadow-xl my-2 mr-0' style={{breakInside:"avoid"}} >
-            <a
+            <a key={index}
               href={item.link}
               style={{ breakInside: "avoid" }}
               className='rounded inline-flex p-2  flex-col bg-white w-full md:w-full m-auto my-4 shadow-2xl hover:shadow-xl'>

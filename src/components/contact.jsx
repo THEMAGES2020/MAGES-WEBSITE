@@ -44,12 +44,14 @@ if ( !ValidateEmail(email)){
   alert("You have entered an invalid email address!")
   return
 }
+
+setonClick(true) 
     try{
       const docref=await addDoc(collection(db,"messages"),{
 Name,Company,mobile,email,work
       })
-      console.log(docref)
-    }
+// console.log(docref)
+   }
 
  catch (e) {
   console.error("Error adding document: ", e);
@@ -71,13 +73,13 @@ Name,Company,mobile,email,work
         }
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setMobile("");
         setWork("");
         setCompany("");
         setemail("");
         setName("");
-        setonClick(!onclick)
+       
 
       })
       .catch((err) => {
