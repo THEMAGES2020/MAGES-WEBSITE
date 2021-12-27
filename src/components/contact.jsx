@@ -50,7 +50,7 @@ setonClick(true)
       const docref=await addDoc(collection(db,"messages"),{
 Name,Company,mobile,email,work
       })
-// console.log(docref)
+console.log(docref)
    }
 
  catch (e) {
