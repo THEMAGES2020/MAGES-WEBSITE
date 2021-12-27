@@ -7,7 +7,7 @@ export default function End() {
         className=' w-11/12 m-auto hidden md:block bg-gray-200 '
         style={{ height: "2px" }}
       />
-      <div className='flex w-11/12 m-auto  items-center justify-between'>
+      <div className='flex w-11/12 m-auto  items-center justify-center md:justify-between'>
         <Link to='/'>
           {" "}
           <p className='text-xl md:text-xl pt-8  text-gray-400 hover:text-blue-400'>
