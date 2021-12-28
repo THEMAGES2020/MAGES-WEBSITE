@@ -136,7 +136,7 @@ function Banner() {
             WE{" "}
           </h1>
           <span className='text-white'>DESIGN </span>
-          <h1 style={{ color: "#44b2e5" }}>TO ELAVATE.</h1>
+          <h1 style={{ color: "#44b2e5" }}>TO ELEVATE.</h1>
           <span
             className='reachout text-2xl p-2 py-4 flex  justify-center items-center mt-4 ease-in duration-300	'
             style={{
