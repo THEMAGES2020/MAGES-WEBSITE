@@ -62,7 +62,7 @@ function Portfolio() {
 
          { [Work1,Work2,Work3,Work4,Work5,Work6].map(works=>{
             return(
-<div className='p-2  flex items-center justify-center   ' style={{display:"flex !important"}}>
+<div key={Math.random()} className='p-2  flex items-center justify-center   ' style={{display:"flex !important"}}>
                               <img src={works} alt='nil'className=" w-76 h-76 rounded-2xl p-0 m-auto" style={{height:"250px",objectFit:"cover"}} />
 
               </div>
