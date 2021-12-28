@@ -19,21 +19,17 @@ function Blogs() {
     const fetchd = () => {
       axios.get("https://magestudio.herokuapp.com/blogs").then((res) => {
         setmediumdata(res.data.rss.channel.item);
+        
+        // console.log(res.data.rss.channel.item);
+        // console.log(data)
 
         // console.log(
         //   res.data.rss.channel.item[0]["content:encoded"]._cdata.match(
         //     expression
         //   )
         // );
-        if (
-          res.data.rss.channel.item[1]["content:encoded"]._cdata.match(
-            expression
-          )
-        ) {
-          // console.error("image");
-          // setisImage(true);
-        }
-      });
+     
+      }).catch(err=>{});
     };
     fetchd();
   });
@@ -194,39 +190,7 @@ function Blogs() {
       <div
         style={{ columnGap: "25px", margin: "auto", rowGap: "4px" }}
         className='columsmain w-11/12 md:w-3/4 '>
-        {/* {data?.map((item, index) => {
-          return (
-            // <div className='w-5/6  p-4  bg-white shadow-2xl hover:shadow-xl my-2 mr-0' style={{breakInside:"avoid"}} >
-            <a
-              key={index}
-              href={item.link._text}
-              style={{ breakInside: "avoid" }}
-              className='rounded inline-flex p-2  flex-col bg-white w-full md:w-full m-auto my-4 shadow-2xl hover:shadow-xl'>
-              <img src={item.thumbnail} alt='' style={{ objectFit: "cover" }} />
-              <h1 className='text-left font-bold p-2'>{item.title}</h1>
-              <div className='flex items-center p-2 py-4'>
-                {data ? (
-                  <img
-                    alt=''
-                    src={data?.feed?.image}
-                    className='w-12 h-12  rounded-full'
-                  />
-                ) : null}
-                {data ? (
-                  <div className='flex-col px-2'>
-                    <p className='text-gray-700'>
-                      {item ? ["dc:creator"]._cdata : null}
-                    </p>
-                    <p className='text-gray-700'>{item?.itm?.substr(0, 10)}</p>
-                  </div>
-                ) : null}
-                {}
-              </div>
-            </a>
-            // </div>
-          );
-        })}
-      </div> */}
+      
 
         {data?.map((item, index) => {
           return (
